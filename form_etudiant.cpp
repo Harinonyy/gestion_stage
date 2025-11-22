@@ -80,10 +80,9 @@ void form_etudiant::on_buttonBox_accepted()
     QString prenom = ui->lineEdit_3->text();
     QString telephone = ui->lineEdit_5->text();
     QString mail = ui->lineEdit_4->text();
-    QString codeClasse = ui->comboBox_classe->currentText();
 
-    if (matricule.isEmpty() || nom.isEmpty() || prenom.isEmpty() || codeClasse.isEmpty()) {
-        QMessageBox::warning(this, "Etudiant", "Matricule, Nom, Prénom et Classe sont obligatoires !");
+    if (matricule.isEmpty() || nom.isEmpty() || prenom.isEmpty()) {
+        QMessageBox::warning(this, "Etudiant", "Matricule, Nom et Prénom sont obligatoires !");
         return;
     }
     if (isEditMode) {
@@ -91,8 +90,8 @@ void form_etudiant::on_buttonBox_accepted()
     } else {
         QSqlQuery etudiant(db);
 
-        etudiant.prepare("INSERT INTO ETUDIANT (Matricule, Nom_etudiant, Prenom_etudiant, Telephone_etudiant, Mail_etudiant, CLASSE_num_classe, GROUPE_num_groupe) "
-                         "VALUES (:matricule, :nom, :prenom, :telephone, :mail, :classe, NULL)");
+        etudiant.prepare("INSERT INTO ETUDIANT (Matricule, Nom_etudiant, Prenom_etudiant, Telephone_etudiant, Mail_etudiant, GROUPE_num_groupe) "
+                         "VALUES (:matricule, :nom, :prenom, :telephone, :mail, NULL)");
 
         etudiant.bindValue(":matricule", matricule);
         etudiant.bindValue(":nom", nom);
@@ -104,7 +103,6 @@ void form_etudiant::on_buttonBox_accepted()
         } else {
             etudiant.bindValue(":mail", mail);
         }
-        etudiant.bindValue(":classe", codeClasse);
 
         if (!etudiant.exec()) {
             QMessageBox::warning(this, "Erreur", "Erreur lors de l'inscription de l'étudiant : " + etudiant.lastError().text());
@@ -126,8 +124,6 @@ void form_etudiant::remplirFormulaire(const QString &matricule, const QString &n
     ui->lineEdit_3->setText(prenom);
     ui->lineEdit_4->setText(mail);
     ui->lineEdit_5->setText(telephone);
-    ui->comboBox_classe->setCurrentText(classe);
-
 
     originalMatricule = matricule;
     isEditMode = true;
@@ -140,14 +136,12 @@ void form_etudiant::mettreAJourEtudiant(const QString &ancienMatricule)
     QString prenom = ui->lineEdit_3->text();
     QString mail = ui->lineEdit_4->text();
     QString telephone = ui->lineEdit_5->text();
-    QString codeClasse = ui->comboBox_classe->currentText();
 
     QSqlQuery query(db);
 
     query.prepare("UPDATE ETUDIANT SET "
                   "Matricule = :matricule, Nom_etudiant = :nom, Prenom_etudiant = :prenom, "
-                  "Telephone_etudiant = :telephone, Mail_etudiant = :mail, "
-                  "CLASSE_num_classe = :classe "
+                  "Telephone_etudiant = :telephone, Mail_etudiant = :mail "
                   "WHERE Matricule = :ancienMatricule");
     query.bindValue(":matricule", nouveauMatricule);
     query.bindValue(":nom", nom);
@@ -159,7 +153,6 @@ void form_etudiant::mettreAJourEtudiant(const QString &ancienMatricule)
     } else {
         query.bindValue(":mail", mail);
     }
-    query.bindValue(":classe", codeClasse);
     query.bindValue(":ancienMatricule", ancienMatricule);
 
     if (!query.exec()) {

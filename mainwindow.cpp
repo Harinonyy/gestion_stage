@@ -228,10 +228,11 @@ void MainWindow::loadEtudiants(const QString& sqlFilter)
     QString queryStr = "SELECT "
                        "E.Matricule, E.Nom_etudiant, E.Prenom_etudiant, "
                        "E.Telephone_etudiant, E.Mail_etudiant, "
-                       "E.CLASSE_num_classe AS Classe, "
+                       "COALESCE(G.CLASSE_num_classe, 'Sans classe') AS Classe, "
                        "COALESCE(E.GROUPE_num_groupe, 'Sans groupe') AS Groupe, "
                        "E.note_presentation "
-                       "FROM ETUDIANT E ";
+                       "FROM ETUDIANT E "
+                       "LEFT JOIN GROUPE G ON E.GROUPE_num_groupe = G.num_groupe AND E.CLASSE_num_classe = G.CLASSE_num_classe ";
 
     if (!sqlFilter.isEmpty()) {
         queryStr += " WHERE " + sqlFilter;
@@ -399,6 +400,9 @@ void MainWindow::loadEvaluationTable(const QString& sqlFilter, bool isSimpleMode
         QMessageBox::critical(this, "Erreur BD", "Impossible de charger l'évaluation.");
         return;
     }
+
+    qDebug() << "Requête évaluation:" << queryStr;
+    qDebug() << "Nombre de lignes retournées:" << query.size();
 
     if (isSimpleMode || !sqlFilter.isEmpty())
     {
@@ -634,7 +638,7 @@ void MainWindow::filterEtudiants(const QString &)
     bool filterApplied = false;
 
     if (classe != "Toutes les Classes" && !classe.isEmpty()) {
-        filtreSql = QString("E.CLASSE_num_classe = '%1'").arg(classe);
+        filtreSql = QString("G.CLASSE_num_classe = '%1'").arg(classe);
         filterApplied = true;
     }
 
@@ -1054,9 +1058,8 @@ void MainWindow::on_btn_supprimer_groupes_clicked()
 
             QSqlQuery updateEtudiants;
             updateEtudiants.prepare("UPDATE ETUDIANT SET GROUPE_num_groupe = NULL "
-                                    "WHERE GROUPE_num_groupe = :groupe AND CLASSE_num_classe = :classe");
+                                    "WHERE GROUPE_num_groupe = :groupe");
             updateEtudiants.bindValue(":groupe", numGroupe);
-            updateEtudiants.bindValue(":classe", nomClasse);
 
             if (!updateEtudiants.exec()) {
                 throw std::runtime_error("Erreur désaffectation étudiants: " + updateEtudiants.lastError().text().toStdString());
@@ -1124,10 +1127,9 @@ void MainWindow::on_btn_modifier_groupes_clicked()
     QStringList matriculesEtudiants;
     QSqlQuery etudiantsQuery;
     etudiantsQuery.prepare("SELECT Matricule FROM ETUDIANT "
-                           "WHERE GROUPE_num_groupe = :groupe AND CLASSE_num_classe = :classe "
+                           "WHERE GROUPE_num_groupe = :groupe "
                            "ORDER BY Matricule");
     etudiantsQuery.bindValue(":groupe", numGroupe);
-    etudiantsQuery.bindValue(":classe", classe);
 
     if (etudiantsQuery.exec()) {
         while (etudiantsQuery.next()) {

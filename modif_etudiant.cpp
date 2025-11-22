@@ -40,7 +40,6 @@ void modif_etudiant::remplirFormulaire(const QString &matricule, const QString &
     ui->lineEdit_3->setText(prenom);
     ui->lineEdit_4->setText(mail);
     ui->lineEdit_5->setText(telephone);
-    ui->comboBox_classe->setCurrentText(classe);
 
     // recup note
     QSqlQuery query;
@@ -66,11 +65,10 @@ void modif_etudiant::on_buttonBox_accepted()
     QString prenom = ui->lineEdit_3->text();
     QString telephone = ui->lineEdit_5->text();
     QString mail = ui->lineEdit_4->text();
-    QString codeClasse = ui->comboBox_classe->currentText();
     QString notePresentation = ui->lineEdit_6->text();
 
-    if (matricule.isEmpty() || nom.isEmpty() || prenom.isEmpty() || codeClasse.isEmpty()) {
-        QMessageBox::warning(this, "Champs vides", "Matricule, Nom, Prénom et Classe sont obligatoires !");
+    if (matricule.isEmpty() || nom.isEmpty() || prenom.isEmpty()) {
+        QMessageBox::warning(this, "Champs vides", "Matricule, Nom et Prénom sont obligatoires !");
         return;
     }
 
@@ -81,7 +79,6 @@ void modif_etudiant::on_buttonBox_accepted()
                   "Prenom_etudiant = :prenom, "
                   "Telephone_etudiant = :telephone, "
                   "Mail_etudiant = :mail, "
-                  "CLASSE_num_classe = :classe, "
                   "note_presentation = :note_presentation "
                   "WHERE Matricule = :ancienMatricule");
 
@@ -95,8 +92,6 @@ void modif_etudiant::on_buttonBox_accepted()
     } else {
         query.bindValue(":mail", mail);
     }
-
-    query.bindValue(":classe", codeClasse);
 
     if (notePresentation.isEmpty()) {
         query.bindValue(":note_presentation", QVariant());

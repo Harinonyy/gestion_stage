@@ -185,7 +185,7 @@ void modif_groupe::on_buttonBox_accepted()
     try {
 
         QSqlQuery desaffecter;
-        desaffecter.prepare("UPDATE ETUDIANT SET GROUPE_num_groupe = NULL WHERE GROUPE_num_groupe = :groupe AND CLASSE_num_classe = :classe");
+        desaffecter.prepare("UPDATE ETUDIANT SET GROUPE_num_groupe = NULL, CLASSE_num_classe = NULL WHERE GROUPE_num_groupe = :groupe AND CLASSE_num_classe = :classe");
         desaffecter.bindValue(":groupe", originalNomGroupe);
         desaffecter.bindValue(":classe", originalClasse);
         if (!desaffecter.exec()) {
@@ -210,7 +210,6 @@ void modif_groupe::on_buttonBox_accepted()
         if (!updateGroupe.exec()) {
             throw std::runtime_error("Erreur mise à jour groupe: " + updateGroupe.lastError().text().toStdString());
         }
-
 
         for (const QString &matricule : nouveauxMatricules) {
             QSqlQuery affecter;
