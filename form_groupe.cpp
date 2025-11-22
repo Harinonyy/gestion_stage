@@ -123,18 +123,20 @@ void form_groupe::chargerEncadreurs()
     }
 }
 
-// calcul incre Gn+1
+// incrementatino n+1
 QString form_groupe::calculerNomGroupeSuivant(const QString& numClasse)
 {
     if (numClasse.isEmpty()) return "";
 
     QSqlQuery query;
     int maxNumero = 0;
+
     QString sql = QString(
-        "SELECT MAX(CAST(SUBSTR(nom_groupe, 2) AS UNSIGNED)) "
+        "SELECT MAX(CAST(num_groupe AS UNSIGNED)) "
         "FROM GROUPE "
         "WHERE CLASSE_num_classe = :numClasse"
         );
+
     query.prepare(sql);
     query.bindValue(":numClasse", numClasse);
 
@@ -145,9 +147,9 @@ QString form_groupe::calculerNomGroupeSuivant(const QString& numClasse)
     } else {
         qDebug() << "Erreur calcul nom groupe:" << query.lastError().text();
     }
-    return "G" + QString::number(maxNumero + 1);
-}
 
+    return QString::number(maxNumero + 1);
+}
 // slots
 
 void form_groupe::on_comboBox_currentIndexChanged(int index)
@@ -197,7 +199,7 @@ void form_groupe::on_buttonBox_accepted()
     // verification raha mbola tsy misy
     for (const QString &matricule : matricules) {
         QSqlQuery verif;
-        verif.prepare("SELECT COUNT(*), GROUPE_nom_groupe FROM ETUDIANT WHERE Matricule = :matricule GROUP BY Matricule");
+        verif.prepare("SELECT COUNT(*), GROUPE_num_groupe FROM ETUDIANT WHERE Matricule = :matricule GROUP BY Matricule");
         verif.bindValue(":matricule", matricule);
 
         if (verif.exec() && verif.next()) {
@@ -218,7 +220,7 @@ void form_groupe::on_buttonBox_accepted()
 
     // Insertion groupe
     QSqlQuery query;
-    query.prepare("INSERT INTO GROUPE (nom_groupe, CLASSE_num_classe, ENSEIGNANT_Trilogie_ens, THEME_num_theme) "
+    query.prepare("INSERT INTO GROUPE (num_groupe, CLASSE_num_classe, ENSEIGNANT_Trilogie_ens, THEME_num_theme) "
                   "VALUES (:nom, :classe, :encadreur, :theme)");
     query.bindValue(":nom", nomGroupe);
     query.bindValue(":classe", numClasse);
@@ -233,7 +235,7 @@ void form_groupe::on_buttonBox_accepted()
     // MAJ etudiant avec groupe
     for (const QString &matricule : matricules) {
         QSqlQuery updateEtudiant;
-        updateEtudiant.prepare("UPDATE ETUDIANT SET GROUPE_nom_groupe = :groupe, CLASSE_num_classe = :classe "
+        updateEtudiant.prepare("UPDATE ETUDIANT SET GROUPE_num_groupe = :groupe, CLASSE_num_classe = :classe "
                                "WHERE Matricule = :matricule");
         updateEtudiant.bindValue(":groupe", nomGroupe);
         updateEtudiant.bindValue(":classe", numClasse);
@@ -247,7 +249,7 @@ void form_groupe::on_buttonBox_accepted()
 
     QMessageBox::information(this, "Succès", "Groupe créé avec succès !");
 
-    // Recharger les donnees dans MainWindow
+
     MainWindow *mw = qobject_cast<MainWindow*>(this->parentWidget());
     if (mw) {
         mw->loadGroupes();

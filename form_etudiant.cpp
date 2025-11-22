@@ -91,7 +91,7 @@ void form_etudiant::on_buttonBox_accepted()
     } else {
         QSqlQuery etudiant(db);
 
-        etudiant.prepare("INSERT INTO ETUDIANT (Matricule, Nom_etudiant, Prenom_etudiant, Telephone_etudiant, Mail_etudiant, CLASSE_num_classe, GROUPE_nom_groupe) "
+        etudiant.prepare("INSERT INTO ETUDIANT (Matricule, Nom_etudiant, Prenom_etudiant, Telephone_etudiant, Mail_etudiant, CLASSE_num_classe, GROUPE_num_groupe) "
                          "VALUES (:matricule, :nom, :prenom, :telephone, :mail, :classe, NULL)");
 
         etudiant.bindValue(":matricule", matricule);

@@ -1,70 +1,76 @@
 # ninja log v5
-8444	10411	7849305962036457	CMakeFiles/Gestion_Stage.dir/Gestion_Stage_autogen/EWIEGA46WW/qrc_icones.cpp.obj	d5f983370db0d32e
-359	8161	7850572431745932	CMakeFiles/Gestion_Stage.dir/modif_etudiant.cpp.obj	444f99e195130aa3
-345	8506	7850572435182986	CMakeFiles/Gestion_Stage.dir/form_etudiant.cpp.obj	e724fa8b663c6335
-342	8944	7850572439527695	CMakeFiles/Gestion_Stage.dir/mainwindow.cpp.obj	e2740563aff749ac
-42	326	7850572349047681	D:/Projet qt/build/Desktop_Qt_6_10_0_MinGW_64_bit-Debug/Gestion_Stage_autogen/timestamp	8f5db5bbeedcff79
-362	7826	7850572428181235	CMakeFiles/Gestion_Stage.dir/modif_groupe.cpp.obj	b0aa4cf027436cfc
-355	8375	7850572433872314	CMakeFiles/Gestion_Stage.dir/form_theme.cpp.obj	c115e6c51e5fe128
-42	326	7850572349047681	D:/Projet qt/build/Desktop_Qt_6_10_0_MinGW_64_bit-Debug/Gestion_Stage_autogen/mocs_compilation.cpp	8f5db5bbeedcff79
-42	326	7850572349047681	Gestion_Stage_autogen/mocs_compilation.cpp	8f5db5bbeedcff79
-2566	2903	7849305887239615	Gestion_Stage_autogen/EWIEGA46WW/qrc_icones.cpp	6c7e6725ed64bc7b
-8944	10060	7850572450604480	Gestion_Stage.exe	e06f423521d4ce2a
-370	8038	7850572430502772	CMakeFiles/Gestion_Stage.dir/modif_theme.cpp.obj	fc6d087bdfbf8bfa
-366	7563	7850572425543600	CMakeFiles/Gestion_Stage.dir/modif_enseignant.cpp.obj	c94a434fe7ca446d
-348	7600	7850572426043301	CMakeFiles/Gestion_Stage.dir/form_groupe.cpp.obj	bac4b13951ce8193
-1302	8566	7850504555731118	CMakeFiles/Gestion_Stage.dir/Gestion_Stage_autogen/mocs_compilation.cpp.obj	6499f5a57f614747
-326	5221	7849331006800170	CMakeFiles/Gestion_Stage.dir/connexionbd.cpp.obj	42549e235a9da6b7
-9	886	7849418004575969	build.ninja	2ab1d428f27bee44
-351	7336	7850572423314895	CMakeFiles/Gestion_Stage.dir/form_enseignant.cpp.obj	31494c3b30e3c126
-2566	2903	7849305887239615	D:/Projet qt/build/Desktop_Qt_6_10_0_MinGW_64_bit-Debug/Gestion_Stage_autogen/EWIEGA46WW/qrc_icones.cpp	6c7e6725ed64bc7b
-1305	7111	7850504541169503	CMakeFiles/Gestion_Stage.dir/main.cpp.obj	535746b3569c9612
-42	326	7850572349047681	Gestion_Stage_autogen/timestamp	8f5db5bbeedcff79
-42	982	7850577397731629	Gestion_Stage_autogen/timestamp	8f5db5bbeedcff79
-42	982	7850577397731629	Gestion_Stage_autogen/mocs_compilation.cpp	8f5db5bbeedcff79
-42	982	7850577397731629	D:/Projet qt/build/Desktop_Qt_6_10_0_MinGW_64_bit-Debug/Gestion_Stage_autogen/timestamp	8f5db5bbeedcff79
-42	982	7850577397731629	D:/Projet qt/build/Desktop_Qt_6_10_0_MinGW_64_bit-Debug/Gestion_Stage_autogen/mocs_compilation.cpp	8f5db5bbeedcff79
-986	7182	7850577460020048	CMakeFiles/Gestion_Stage.dir/main.cpp.obj	535746b3569c9612
-1020	7816	7850577466527623	CMakeFiles/Gestion_Stage.dir/modif_enseignant.cpp.obj	c94a434fe7ca446d
-983	8218	7850577469765758	CMakeFiles/Gestion_Stage.dir/Gestion_Stage_autogen/mocs_compilation.cpp.obj	6499f5a57f614747
-1007	8490	7850577473203790	CMakeFiles/Gestion_Stage.dir/modif_etudiant.cpp.obj	444f99e195130aa3
-999	8804	7850577476719887	CMakeFiles/Gestion_Stage.dir/form_enseignant.cpp.obj	31494c3b30e3c126
-996	9026	7850577478980898	CMakeFiles/Gestion_Stage.dir/form_groupe.cpp.obj	bac4b13951ce8193
-1003	9657	7850577485340553	CMakeFiles/Gestion_Stage.dir/form_theme.cpp.obj	c115e6c51e5fe128
-992	9840	7850577487150232	CMakeFiles/Gestion_Stage.dir/form_etudiant.cpp.obj	e724fa8b663c6335
-1016	9894	7850577487678979	CMakeFiles/Gestion_Stage.dir/modif_groupe.cpp.obj	b0aa4cf027436cfc
-989	10557	7850577494283382	CMakeFiles/Gestion_Stage.dir/mainwindow.cpp.obj	e2740563aff749ac
-7182	12234	7850577511103839	CMakeFiles/Gestion_Stage.dir/modif_theme.cpp.obj	fc6d087bdfbf8bfa
-12234	13416	7850577522780114	Gestion_Stage.exe	e06f423521d4ce2a
-40	1009	7850578443281760	Gestion_Stage_autogen/timestamp	8f5db5bbeedcff79
-40	1009	7850578443281760	Gestion_Stage_autogen/mocs_compilation.cpp	8f5db5bbeedcff79
-40	1009	7850578443281760	D:/Projet qt/build/Desktop_Qt_6_10_0_MinGW_64_bit-Debug/Gestion_Stage_autogen/timestamp	8f5db5bbeedcff79
-40	1009	7850578443281760	D:/Projet qt/build/Desktop_Qt_6_10_0_MinGW_64_bit-Debug/Gestion_Stage_autogen/mocs_compilation.cpp	8f5db5bbeedcff79
-1013	6969	7850578502686066	CMakeFiles/Gestion_Stage.dir/main.cpp.obj	535746b3569c9612
-1010	7387	7850578507397046	CMakeFiles/Gestion_Stage.dir/Gestion_Stage_autogen/mocs_compilation.cpp.obj	6499f5a57f614747
-1026	7703	7850578510885039	CMakeFiles/Gestion_Stage.dir/form_enseignant.cpp.obj	31494c3b30e3c126
-1033	7822	7850578512104338	CMakeFiles/Gestion_Stage.dir/modif_etudiant.cpp.obj	444f99e195130aa3
-1054	8731	7850578521205264	CMakeFiles/Gestion_Stage.dir/modif_enseignant.cpp.obj	c94a434fe7ca446d
-1029	9448	7850578528457463	CMakeFiles/Gestion_Stage.dir/form_theme.cpp.obj	c115e6c51e5fe128
-1019	9803	7850578532046898	CMakeFiles/Gestion_Stage.dir/form_etudiant.cpp.obj	e724fa8b663c6335
-1022	9842	7850578532422272	CMakeFiles/Gestion_Stage.dir/form_groupe.cpp.obj	bac4b13951ce8193
-1037	9992	7850578533952074	CMakeFiles/Gestion_Stage.dir/modif_groupe.cpp.obj	b0aa4cf027436cfc
-1015	10786	7850578541828217	CMakeFiles/Gestion_Stage.dir/mainwindow.cpp.obj	e2740563aff749ac
-6969	12087	7850578554904119	CMakeFiles/Gestion_Stage.dir/modif_theme.cpp.obj	fc6d087bdfbf8bfa
-12087	13176	7850578565648634	Gestion_Stage.exe	e06f423521d4ce2a
-38	2683	7851613034796918	Gestion_Stage_autogen/timestamp	8f5db5bbeedcff79
-38	2683	7851613034796918	Gestion_Stage_autogen/mocs_compilation.cpp	8f5db5bbeedcff79
-38	2683	7851613034796918	D:/Projet qt/build/Desktop_Qt_6_10_0_MinGW_64_bit-Debug/Gestion_Stage_autogen/timestamp	8f5db5bbeedcff79
-38	2683	7851613034796918	D:/Projet qt/build/Desktop_Qt_6_10_0_MinGW_64_bit-Debug/Gestion_Stage_autogen/mocs_compilation.cpp	8f5db5bbeedcff79
+67	372	7855436761708771	Gestion_Stage_autogen/timestamp	8f5db5bbeedcff79
 2688	10395	7851613112301212	CMakeFiles/Gestion_Stage.dir/main.cpp.obj	535746b3569c9612
-2718	10452	7851613112769951	CMakeFiles/Gestion_Stage.dir/modif_enseignant.cpp.obj	c94a434fe7ca446d
+2566	2903	7849305887239615	D:/Projet qt/build/Desktop_Qt_6_10_0_MinGW_64_bit-Debug/Gestion_Stage_autogen/EWIEGA46WW/qrc_icones.cpp	6c7e6725ed64bc7b
+396	8570	7855436848624767	CMakeFiles/Gestion_Stage.dir/form_enseignant.cpp.obj	31494c3b30e3c126
+9	886	7849418004575969	build.ninja	2ab1d428f27bee44
+326	5221	7849331006800170	CMakeFiles/Gestion_Stage.dir/connexionbd.cpp.obj	42549e235a9da6b7
 2684	10694	7851613115113513	CMakeFiles/Gestion_Stage.dir/Gestion_Stage_autogen/mocs_compilation.cpp.obj	6499f5a57f614747
-2710	10990	7851613118238304	CMakeFiles/Gestion_Stage.dir/modif_etudiant.cpp.obj	444f99e195130aa3
-2695	11063	7851613119331963	CMakeFiles/Gestion_Stage.dir/form_etudiant.cpp.obj	e724fa8b663c6335
-2714	11246	7851613121206825	CMakeFiles/Gestion_Stage.dir/modif_groupe.cpp.obj	b0aa4cf027436cfc
-2706	11257	7851613121363055	CMakeFiles/Gestion_Stage.dir/form_theme.cpp.obj	c115e6c51e5fe128
-2699	11427	7851613123029494	CMakeFiles/Gestion_Stage.dir/form_groupe.cpp.obj	bac4b13951ce8193
-2702	11536	7851613124123156	CMakeFiles/Gestion_Stage.dir/form_enseignant.cpp.obj	31494c3b30e3c126
-2691	12752	7851613136309825	CMakeFiles/Gestion_Stage.dir/mainwindow.cpp.obj	e2740563aff749ac
-10395	15200	7851613160839245	CMakeFiles/Gestion_Stage.dir/modif_theme.cpp.obj	fc6d087bdfbf8bfa
-15200	16834	7851613177088047	Gestion_Stage.exe	e06f423521d4ce2a
+393	9188	7855436854800049	CMakeFiles/Gestion_Stage.dir/form_groupe.cpp.obj	bac4b13951ce8193
+8444	10411	7849305962036457	CMakeFiles/Gestion_Stage.dir/Gestion_Stage_autogen/EWIEGA46WW/qrc_icones.cpp.obj	d5f983370db0d32e
+404	7151	7855436833825931	CMakeFiles/Gestion_Stage.dir/modif_etudiant.cpp.obj	444f99e195130aa3
+67	372	7855436761708771	D:/Projet qt/build/Desktop_Qt_6_10_0_MinGW_64_bit-Debug/Gestion_Stage_autogen/mocs_compilation.cpp	8f5db5bbeedcff79
+390	7473	7855436837466164	CMakeFiles/Gestion_Stage.dir/form_etudiant.cpp.obj	e724fa8b663c6335
+387	9449	7855436857402905	CMakeFiles/Gestion_Stage.dir/mainwindow.cpp.obj	e2740563aff749ac
+67	372	7855436761708771	D:/Projet qt/build/Desktop_Qt_6_10_0_MinGW_64_bit-Debug/Gestion_Stage_autogen/timestamp	8f5db5bbeedcff79
+408	9074	7855436853659792	CMakeFiles/Gestion_Stage.dir/modif_groupe.cpp.obj	b0aa4cf027436cfc
+400	8551	7855436848439022	CMakeFiles/Gestion_Stage.dir/form_theme.cpp.obj	c115e6c51e5fe128
+67	372	7855436761708771	Gestion_Stage_autogen/mocs_compilation.cpp	8f5db5bbeedcff79
+2566	2903	7849305887239615	Gestion_Stage_autogen/EWIEGA46WW/qrc_icones.cpp	6c7e6725ed64bc7b
+411	6515	7855436827632512	CMakeFiles/Gestion_Stage.dir/modif_enseignant.cpp.obj	c94a434fe7ca446d
+9449	10593	7855436868727300	Gestion_Stage.exe	e06f423521d4ce2a
+415	8464	7855436847422113	CMakeFiles/Gestion_Stage.dir/modif_theme.cpp.obj	fc6d087bdfbf8bfa
+85	410	7855454257499345	Gestion_Stage_autogen/timestamp	8f5db5bbeedcff79
+85	410	7855454257499345	Gestion_Stage_autogen/mocs_compilation.cpp	8f5db5bbeedcff79
+85	410	7855454257499345	D:/Projet qt/build/Desktop_Qt_6_10_0_MinGW_64_bit-Debug/Gestion_Stage_autogen/timestamp	8f5db5bbeedcff79
+85	410	7855454257499345	D:/Projet qt/build/Desktop_Qt_6_10_0_MinGW_64_bit-Debug/Gestion_Stage_autogen/mocs_compilation.cpp	8f5db5bbeedcff79
+452	7649	7855454336158932	CMakeFiles/Gestion_Stage.dir/modif_theme.cpp.obj	fc6d087bdfbf8bfa
+430	7714	7855454337008433	CMakeFiles/Gestion_Stage.dir/form_etudiant.cpp.obj	e724fa8b663c6335
+442	7798	7855454337897922	CMakeFiles/Gestion_Stage.dir/modif_etudiant.cpp.obj	444f99e195130aa3
+449	7835	7855454338257729	CMakeFiles/Gestion_Stage.dir/modif_enseignant.cpp.obj	c94a434fe7ca446d
+437	8527	7855454345214127	CMakeFiles/Gestion_Stage.dir/form_enseignant.cpp.obj	31494c3b30e3c126
+440	8653	7855454346423428	CMakeFiles/Gestion_Stage.dir/form_theme.cpp.obj	c115e6c51e5fe128
+445	8711	7855454347031700	CMakeFiles/Gestion_Stage.dir/modif_groupe.cpp.obj	b0aa4cf027436cfc
+433	8803	7855454347917995	CMakeFiles/Gestion_Stage.dir/form_groupe.cpp.obj	bac4b13951ce8193
+64	402	7855458112122054	Gestion_Stage_autogen/timestamp	8f5db5bbeedcff79
+64	402	7855458112122054	Gestion_Stage_autogen/mocs_compilation.cpp	8f5db5bbeedcff79
+64	402	7855458112122054	D:/Projet qt/build/Desktop_Qt_6_10_0_MinGW_64_bit-Debug/Gestion_Stage_autogen/timestamp	8f5db5bbeedcff79
+64	402	7855458112122054	D:/Projet qt/build/Desktop_Qt_6_10_0_MinGW_64_bit-Debug/Gestion_Stage_autogen/mocs_compilation.cpp	8f5db5bbeedcff79
+447	6579	7855458178504975	CMakeFiles/Gestion_Stage.dir/modif_enseignant.cpp.obj	c94a434fe7ca446d
+443	7873	7855458191717342	CMakeFiles/Gestion_Stage.dir/modif_groupe.cpp.obj	b0aa4cf027436cfc
+435	7959	7855458192268369	CMakeFiles/Gestion_Stage.dir/form_theme.cpp.obj	c115e6c51e5fe128
+430	7972	7855458192438274	CMakeFiles/Gestion_Stage.dir/form_enseignant.cpp.obj	31494c3b30e3c126
+439	8189	7855458194848386	CMakeFiles/Gestion_Stage.dir/modif_etudiant.cpp.obj	444f99e195130aa3
+452	8434	7855458197437657	CMakeFiles/Gestion_Stage.dir/modif_theme.cpp.obj	fc6d087bdfbf8bfa
+422	9030	7855458203379307	CMakeFiles/Gestion_Stage.dir/form_etudiant.cpp.obj	e724fa8b663c6335
+426	9183	7855458204898436	CMakeFiles/Gestion_Stage.dir/form_groupe.cpp.obj	bac4b13951ce8193
+419	10218	7855458215245746	CMakeFiles/Gestion_Stage.dir/mainwindow.cpp.obj	e2740563aff749ac
+10218	11742	7855458230386959	Gestion_Stage.exe	e06f423521d4ce2a
+53	400	7855458852977968	Gestion_Stage_autogen/timestamp	8f5db5bbeedcff79
+53	400	7855458852977968	Gestion_Stage_autogen/mocs_compilation.cpp	8f5db5bbeedcff79
+53	400	7855458852977968	D:/Projet qt/build/Desktop_Qt_6_10_0_MinGW_64_bit-Debug/Gestion_Stage_autogen/timestamp	8f5db5bbeedcff79
+53	400	7855458852977968	D:/Projet qt/build/Desktop_Qt_6_10_0_MinGW_64_bit-Debug/Gestion_Stage_autogen/mocs_compilation.cpp	8f5db5bbeedcff79
+434	7604	7855458931741497	CMakeFiles/Gestion_Stage.dir/form_enseignant.cpp.obj	31494c3b30e3c126
+449	7701	7855458932880845	CMakeFiles/Gestion_Stage.dir/modif_enseignant.cpp.obj	c94a434fe7ca446d
+426	7881	7855458934729778	CMakeFiles/Gestion_Stage.dir/form_etudiant.cpp.obj	e724fa8b663c6335
+438	8241	7855458938467613	CMakeFiles/Gestion_Stage.dir/form_theme.cpp.obj	c115e6c51e5fe128
+453	8945	7855458945639987	CMakeFiles/Gestion_Stage.dir/modif_theme.cpp.obj	fc6d087bdfbf8bfa
+441	9040	7855458946573338	CMakeFiles/Gestion_Stage.dir/modif_etudiant.cpp.obj	444f99e195130aa3
+430	9493	7855458951102729	CMakeFiles/Gestion_Stage.dir/form_groupe.cpp.obj	bac4b13951ce8193
+445	9540	7855458951558904	CMakeFiles/Gestion_Stage.dir/modif_groupe.cpp.obj	b0aa4cf027436cfc
+422	9827	7855458954411234	CMakeFiles/Gestion_Stage.dir/mainwindow.cpp.obj	e2740563aff749ac
+9827	11078	7855458966826931	Gestion_Stage.exe	e06f423521d4ce2a
+79	446	7855462689557208	Gestion_Stage_autogen/timestamp	8f5db5bbeedcff79
+79	446	7855462689557208	Gestion_Stage_autogen/mocs_compilation.cpp	8f5db5bbeedcff79
+79	446	7855462689557208	D:/Projet qt/build/Desktop_Qt_6_10_0_MinGW_64_bit-Debug/Gestion_Stage_autogen/timestamp	8f5db5bbeedcff79
+79	446	7855462689557208	D:/Projet qt/build/Desktop_Qt_6_10_0_MinGW_64_bit-Debug/Gestion_Stage_autogen/mocs_compilation.cpp	8f5db5bbeedcff79
+492	7687	7855462772222997	CMakeFiles/Gestion_Stage.dir/modif_enseignant.cpp.obj	c94a434fe7ca446d
+480	8062	7855462776292575	CMakeFiles/Gestion_Stage.dir/form_theme.cpp.obj	c115e6c51e5fe128
+476	8257	7855462778492255	CMakeFiles/Gestion_Stage.dir/form_enseignant.cpp.obj	31494c3b30e3c126
+484	8297	7855462778803679	CMakeFiles/Gestion_Stage.dir/modif_etudiant.cpp.obj	444f99e195130aa3
+465	8358	7855462779413592	CMakeFiles/Gestion_Stage.dir/form_etudiant.cpp.obj	e724fa8b663c6335
+496	8444	7855462780433279	CMakeFiles/Gestion_Stage.dir/modif_theme.cpp.obj	fc6d087bdfbf8bfa
+473	8574	7855462781728263	CMakeFiles/Gestion_Stage.dir/form_groupe.cpp.obj	bac4b13951ce8193
+488	8800	7855462784011356	CMakeFiles/Gestion_Stage.dir/modif_groupe.cpp.obj	b0aa4cf027436cfc
+461	9778	7855462793763647	CMakeFiles/Gestion_Stage.dir/mainwindow.cpp.obj	e2740563aff749ac
+9778	11292	7855462808874350	Gestion_Stage.exe	e06f423521d4ce2a

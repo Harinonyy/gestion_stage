@@ -185,7 +185,7 @@ void modif_groupe::on_buttonBox_accepted()
     try {
 
         QSqlQuery desaffecter;
-        desaffecter.prepare("UPDATE ETUDIANT SET GROUPE_nom_groupe = NULL WHERE GROUPE_nom_groupe = :groupe AND CLASSE_num_classe = :classe");
+        desaffecter.prepare("UPDATE ETUDIANT SET GROUPE_num_groupe = NULL WHERE GROUPE_num_groupe = :groupe AND CLASSE_num_classe = :classe");
         desaffecter.bindValue(":groupe", originalNomGroupe);
         desaffecter.bindValue(":classe", originalClasse);
         if (!desaffecter.exec()) {
@@ -194,11 +194,10 @@ void modif_groupe::on_buttonBox_accepted()
 
 
         QSqlQuery updateGroupe;
-        updateGroupe.prepare("UPDATE GROUPE SET nom_groupe = :nouveau_nom, CLASSE_num_classe = :nouvelle_classe, "
+        updateGroupe.prepare("UPDATE GROUPE SET num_groupe = :nouveau_nom, CLASSE_num_classe = :nouvelle_classe, "
                              "ENSEIGNANT_Trilogie_ens = :encadreur, THEME_num_theme = :theme, "
                              "note_rapport = :note_rapport, note_application = :note_app "
-                             "WHERE nom_groupe = :ancien_nom AND CLASSE_num_classe = :ancienne_classe");
-
+                             "WHERE num_groupe = :ancien_nom AND CLASSE_num_classe = :ancienne_classe");
         updateGroupe.bindValue(":nouveau_nom", nomGroupe);
         updateGroupe.bindValue(":nouvelle_classe", nouvelleClasse);
         updateGroupe.bindValue(":encadreur", encadreur);
@@ -215,7 +214,7 @@ void modif_groupe::on_buttonBox_accepted()
 
         for (const QString &matricule : nouveauxMatricules) {
             QSqlQuery affecter;
-            affecter.prepare("UPDATE ETUDIANT SET GROUPE_nom_groupe = :groupe, CLASSE_num_classe = :classe WHERE Matricule = :matricule");
+            affecter.prepare("UPDATE ETUDIANT SET GROUPE_num_groupe = :groupe, CLASSE_num_classe = :classe WHERE Matricule = :matricule");
             affecter.bindValue(":groupe", nomGroupe);
             affecter.bindValue(":classe", nouvelleClasse);
             affecter.bindValue(":matricule", matricule);

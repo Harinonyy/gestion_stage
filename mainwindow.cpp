@@ -229,7 +229,7 @@ void MainWindow::loadEtudiants(const QString& sqlFilter)
                        "E.Matricule, E.Nom_etudiant, E.Prenom_etudiant, "
                        "E.Telephone_etudiant, E.Mail_etudiant, "
                        "E.CLASSE_num_classe AS Classe, "
-                       "COALESCE(E.GROUPE_nom_groupe, 'Sans groupe') AS Groupe, "
+                       "COALESCE(E.GROUPE_num_groupe, 'Sans groupe') AS Groupe, "
                        "E.note_presentation "
                        "FROM ETUDIANT E ";
 
@@ -260,12 +260,12 @@ void MainWindow::loadEtudiants(const QString& sqlFilter)
     ui->table_etudiants->resizeColumnsToContents();
     ui->table_etudiants->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
 }
-void MainWindow::loadGroupes(const QString& encadreurTrilogie, const QString& nomGroupeFiltre)
+void MainWindow::loadGroupes(const QString& encadreurTrilogie, const QString& numGroupeFiltre)
 {
     QSqlQueryModel *model_groupes = new QSqlQueryModel(this);
 
     QString queryStr = "SELECT "
-                       "g.nom_groupe, "
+                       "g.num_groupe, "
                        "c.num_classe, "
                        "t.libelle, "
                        "CONCAT(e.Nom_enseignant, ' ', e.Prenom_enseignant) AS NomEncadreur, "
@@ -282,15 +282,15 @@ void MainWindow::loadGroupes(const QString& encadreurTrilogie, const QString& no
         conditions << QString("g.ENSEIGNANT_Trilogie_ens = '%1'").arg(encadreurTrilogie);
     }
 
-    if (!nomGroupeFiltre.isEmpty()) {
-        conditions << QString("g.nom_groupe LIKE '%%1%'").arg(nomGroupeFiltre);
+    if (!numGroupeFiltre.isEmpty()) {
+        conditions << QString("g.num_groupe LIKE '%%1%'").arg(numGroupeFiltre);
     }
 
     if (!conditions.isEmpty()) {
         queryStr += " WHERE " + conditions.join(" AND ");
     }
 
-    queryStr += " ORDER BY g.nom_groupe ASC";
+    queryStr += " ORDER BY g.num_groupe ASC";
 
     model_groupes->setQuery(queryStr);
 
@@ -378,25 +378,20 @@ void MainWindow::loadThemes()
 void MainWindow::loadEvaluationTable(const QString& sqlFilter, bool isSimpleMode)
 {
     QString queryStr = "SELECT "
-                       "G.nom_groupe, C.num_classe, "
+                       "G.num_groupe, C.num_classe, "
                        "E.Matricule, E.Nom_etudiant, E.Prenom_etudiant, "
                        "E.note_presentation, "
                        "G.note_rapport, "
-                       "G.note_application, "
-                       "CASE "
-                       "WHEN E.note_presentation IS NOT NULL AND G.note_rapport IS NOT NULL AND G.note_application IS NOT NULL "
-                       "THEN ROUND((E.note_presentation + G.note_rapport + G.note_application) / 3, 2) "
-                       "ELSE NULL "
-                       "END AS NoteDefinitive "
+                       "G.note_application "
                        "FROM GROUPE G "
-                       "JOIN ETUDIANT E ON G.nom_groupe = E.GROUPE_nom_groupe AND G.CLASSE_num_classe = E.CLASSE_num_classe "
+                       "JOIN ETUDIANT E ON G.num_groupe = E.GROUPE_num_groupe AND G.CLASSE_num_classe = E.CLASSE_num_classe "
                        "JOIN CLASSE C ON G.CLASSE_num_classe = C.num_classe ";
 
     if (!sqlFilter.isEmpty()) {
         queryStr += " WHERE " + sqlFilter;
     }
 
-    queryStr += " ORDER BY G.nom_groupe ASC, E.Nom_etudiant ASC";
+    queryStr += " ORDER BY G.num_groupe ASC, E.Nom_etudiant ASC";
 
     QSqlQuery query;
     if (!query.exec(queryStr)) {
@@ -407,18 +402,44 @@ void MainWindow::loadEvaluationTable(const QString& sqlFilter, bool isSimpleMode
 
     if (isSimpleMode || !sqlFilter.isEmpty())
     {
-        QSqlQueryModel *modeleSimple = new QSqlQueryModel(this);
-        modeleSimple->setQuery(queryStr);
+        QStandardItemModel *modeleSimple = new QStandardItemModel(this);
+        modeleSimple->setHorizontalHeaderLabels({
+            "Groupe", "Classe", "Matricule", "Nom Étudiant", "Prénom",
+            "Note Présentation", "Note Rapport", "Note Application", "Note Définitive"
+        });
 
-        modeleSimple->setHeaderData(0, Qt::Horizontal, "Groupe");
-        modeleSimple->setHeaderData(1, Qt::Horizontal, "Classe");
-        modeleSimple->setHeaderData(2, Qt::Horizontal, "Matricule");
-        modeleSimple->setHeaderData(3, Qt::Horizontal, "Nom Étudiant");
-        modeleSimple->setHeaderData(4, Qt::Horizontal, "Prénom");
-        modeleSimple->setHeaderData(5, Qt::Horizontal, "Note Présentation");
-        modeleSimple->setHeaderData(6, Qt::Horizontal, "Note Rapport");
-        modeleSimple->setHeaderData(7, Qt::Horizontal, "Note Application");
-        modeleSimple->setHeaderData(8, Qt::Horizontal, "Note Définitive");
+        int row = 0;
+        while (query.next()) {
+            QString numGroupe = query.value(0).toString();
+            QString numClasse = query.value(1).toString();
+            QString matricule = query.value(2).toString();
+            QString nomEtudiant = query.value(3).toString();
+            QString prenomEtudiant = query.value(4).toString();
+            QVariant notePresentation = query.value(5);
+            QVariant noteRapport = query.value(6);
+            QVariant noteApplication = query.value(7);
+
+            // note def
+            QString noteDefinitive = "";
+            if (!notePresentation.isNull() && !noteRapport.isNull() && !noteApplication.isNull()) {
+                double moyenne = (notePresentation.toDouble() +
+                                  noteRapport.toDouble() +
+                                  noteApplication.toDouble()) / 3.0;
+                noteDefinitive = QString::number(round(moyenne * 100) / 100, 'f', 2);
+            }
+
+            modeleSimple->setItem(row, 0, new QStandardItem(numGroupe));
+            modeleSimple->setItem(row, 1, new QStandardItem(numClasse));
+            modeleSimple->setItem(row, 2, new QStandardItem(matricule));
+            modeleSimple->setItem(row, 3, new QStandardItem(nomEtudiant));
+            modeleSimple->setItem(row, 4, new QStandardItem(prenomEtudiant));
+            modeleSimple->setItem(row, 5, new QStandardItem(notePresentation.isNull() ? "" : notePresentation.toString()));
+            modeleSimple->setItem(row, 6, new QStandardItem(noteRapport.isNull() ? "" : noteRapport.toString()));
+            modeleSimple->setItem(row, 7, new QStandardItem(noteApplication.isNull() ? "" : noteApplication.toString()));
+            modeleSimple->setItem(row, 8, new QStandardItem(noteDefinitive));
+
+            row++;
+        }
 
         ui->table_evaluation->setModel(modeleSimple);
     }
@@ -436,33 +457,39 @@ void MainWindow::loadEvaluationTable(const QString& sqlFilter, bool isSimpleMode
 
         while (query.next())
         {
-            QString nomGroupe = query.value("nom_groupe").toString();
-            QString numClasse = query.value("num_classe").toString();
+            QString numGroupe = query.value(0).toString();
+            QString numClasse = query.value(1).toString();
+            QString nomEtudiant = query.value(3).toString();
+            QString prenomEtudiant = query.value(4).toString();
+            QVariant notePresentation = query.value(5);
+            QVariant noteRapport = query.value(6);
+            QVariant noteApplication = query.value(7);
 
-            QString nomEtudiant = query.value("Nom_etudiant").toString();
-            QString prenomEtudiant = query.value("Prenom_etudiant").toString();
-            QVariant notePresentation = query.value("note_presentation");
-            QVariant noteRapport = query.value("note_rapport");
-            QVariant noteApplication = query.value("note_application");
-            QVariant noteDefinitive = query.value("NoteDefinitive");
+            // note def
+            QString noteDefinitive = "";
+            if (!notePresentation.isNull() && !noteRapport.isNull() && !noteApplication.isNull()) {
+                double moyenne = (notePresentation.toDouble() +
+                                  noteRapport.toDouble() +
+                                  noteApplication.toDouble()) / 3.0;
+                noteDefinitive = QString::number(round(moyenne * 100) / 100, 'f', 2);
+            }
 
-
-            model->setItem(row, 0, new QStandardItem(nomGroupe));
+            model->setItem(row, 0, new QStandardItem(numGroupe));
             model->setItem(row, 1, new QStandardItem(numClasse));
             model->setItem(row, 2, new QStandardItem(QString("%1 %2").arg(nomEtudiant, prenomEtudiant)));
             model->setItem(row, 3, new QStandardItem(notePresentation.isNull() ? "" : notePresentation.toString()));
             model->setItem(row, 4, new QStandardItem(noteRapport.isNull() ? "" : noteRapport.toString()));
             model->setItem(row, 5, new QStandardItem(noteApplication.isNull() ? "" : noteApplication.toString()));
-            model->setItem(row, 6, new QStandardItem(noteDefinitive.isNull() ? "" : noteDefinitive.toString()));
+            model->setItem(row, 6, new QStandardItem(noteDefinitive));
 
-             //Mettre en gras
-            if (nomGroupe != currentGroup) {
+            // Mettre en gras
+            if (numGroupe != currentGroup) {
                 for (int col = 0; col < model->columnCount(); ++col) {
                     if (model->item(row, col)) {
                         model->item(row, col)->setFont(QFont("Arial", 10, QFont::Bold));
                     }
                 }
-                currentGroup = nomGroupe;
+                currentGroup = numGroupe;
             }
 
             row++;
@@ -577,19 +604,19 @@ void MainWindow::updateGroupesCombo(const QString &classe)
     QString queryString;
 
     if (classe == "Toutes les Classes" || classe.isEmpty()) {
-        queryString = "SELECT nom_groupe, nom_groupe FROM GROUPE ORDER BY nom_groupe";
+        queryString = "SELECT num_groupe, num_groupe FROM GROUPE ORDER BY num_groupe";
     } else {
         queryString = QString(
-                          "SELECT G.nom_groupe, G.nom_groupe FROM GROUPE G "
+                          "SELECT G.num_groupe, G.num_groupe FROM GROUPE G "
                           "WHERE G.CLASSE_num_classe = '%1' "
-                          "ORDER BY G.nom_groupe"
+                          "ORDER BY G.num_groupe"
                           ).arg(classe);
     }
 
     if (query.exec(queryString)) {
         while (query.next()) {
-            QString nomGroupe = query.value(0).toString();
-            ui->filtre_groupe->addItem(nomGroupe, nomGroupe);
+            QString numGroupe = query.value(0).toString();
+            ui->filtre_groupe->addItem(numGroupe, numGroupe);
         }
     } else {
         qDebug() << "Erreur SQL updateGroupesCombo:" << query.lastError().text();
@@ -601,7 +628,7 @@ void MainWindow::updateGroupesCombo(const QString &classe)
 void MainWindow::filterEtudiants(const QString &)
 {
     QString classe = ui->filtre_classe->currentText();
-    QString nomGroupe = ui->filtre_groupe->currentData().toString();
+    QString numGroupe = ui->filtre_groupe->currentData().toString();
 
     QString filtreSql = "";
     bool filterApplied = false;
@@ -611,11 +638,11 @@ void MainWindow::filterEtudiants(const QString &)
         filterApplied = true;
     }
 
-    if (!nomGroupe.isEmpty()) {
+    if (!numGroupe.isEmpty()) {
         if (filterApplied) {
             filtreSql += " AND ";
         }
-        filtreSql += QString("E.GROUPE_nom_groupe = '%1'").arg(nomGroupe);
+        filtreSql += QString("E.GROUPE_num_groupe = '%1'").arg(numGroupe);
         filterApplied = true;
     }
 
@@ -653,9 +680,9 @@ void MainWindow::on_filtre_encadreur_currentIndexChanged(int index)
 
 void MainWindow::on_recherche_groupes_textChanged(const QString &arg1)
 {
-    QString nomGroupeFiltre = arg1;
+    QString numGroupeFiltre = arg1;
     QString encadreurTrilogie = ui->filtre_encadreur->currentData().toString();
-    loadGroupes(encadreurTrilogie, nomGroupeFiltre);
+    loadGroupes(encadreurTrilogie, numGroupeFiltre);
 }
 
 // page evaluation
@@ -670,7 +697,7 @@ void MainWindow::on_recherche_textChanged(const QString &texteRecherche)
     QString filtre = "";
 
     if (!texteRecherche.isEmpty()) {
-        filtre = QString("(G.nom_groupe LIKE '%%1%') OR (E.Matricule LIKE '%%1%')").arg(texteRecherche);
+        filtre = QString("(G.num_groupe LIKE '%%1%') OR (E.Matricule LIKE '%%1%')").arg(texteRecherche);
     }
 
     loadEvaluationTable(filtre);
@@ -1010,12 +1037,12 @@ void MainWindow::on_btn_supprimer_groupes_clicked()
     }
 
     int row = selection.at(0).row();
-    QString nomGroupe = ui->table_groupes->model()->index(row, 0).data().toString();
+    QString numGroupe = ui->table_groupes->model()->index(row, 0).data().toString();
     QString nomClasse = ui->table_groupes->model()->index(row, 1).data().toString();
 
     QMessageBox::StandardButton reply = QMessageBox::question(
         this, "Confirmation",
-        "Voulez-vous vraiment supprimer le groupe : " + nomGroupe + " de la classe " + nomClasse + " ?\n\n"
+        "Voulez-vous vraiment supprimer le groupe : " + numGroupe + " de la classe " + nomClasse + " ?\n\n"
                                                                                                    "⚠️ Cette action supprimera également l'affectation de tous les étudiants de ce groupe.",
         QMessageBox::Yes | QMessageBox::No
         );
@@ -1026,9 +1053,9 @@ void MainWindow::on_btn_supprimer_groupes_clicked()
         try {
 
             QSqlQuery updateEtudiants;
-            updateEtudiants.prepare("UPDATE ETUDIANT SET GROUPE_nom_groupe = NULL "
-                                    "WHERE GROUPE_nom_groupe = :groupe AND CLASSE_num_classe = :classe");
-            updateEtudiants.bindValue(":groupe", nomGroupe);
+            updateEtudiants.prepare("UPDATE ETUDIANT SET GROUPE_num_groupe = NULL "
+                                    "WHERE GROUPE_num_groupe = :groupe AND CLASSE_num_classe = :classe");
+            updateEtudiants.bindValue(":groupe", numGroupe);
             updateEtudiants.bindValue(":classe", nomClasse);
 
             if (!updateEtudiants.exec()) {
@@ -1036,8 +1063,8 @@ void MainWindow::on_btn_supprimer_groupes_clicked()
             }
 
             QSqlQuery deleteGroupe;
-            deleteGroupe.prepare("DELETE FROM GROUPE WHERE nom_groupe = :groupe AND CLASSE_num_classe = :classe");
-            deleteGroupe.bindValue(":groupe", nomGroupe);
+            deleteGroupe.prepare("DELETE FROM GROUPE WHERE num_groupe = :groupe AND CLASSE_num_classe = :classe");
+            deleteGroupe.bindValue(":groupe", numGroupe);
             deleteGroupe.bindValue(":classe", nomClasse);
 
             if (!deleteGroupe.exec()) {
@@ -1047,7 +1074,7 @@ void MainWindow::on_btn_supprimer_groupes_clicked()
             QSqlDatabase::database().commit();
 
             QMessageBox::information(this, "Succès",
-                                     "Le groupe " + nomGroupe + " a été supprimé avec succès !\n"
+                                     "Le groupe " + numGroupe + " a été supprimé avec succès !\n"
                                                                 "Les étudiants ont été désaffectés du groupe.");
 
 
@@ -1072,7 +1099,7 @@ void MainWindow::on_btn_modifier_groupes_clicked()
 
     int row = selection.at(0).row();
 
-    QString nomGroupe = ui->table_groupes->model()->index(row, 0).data().toString();
+    QString numGroupe = ui->table_groupes->model()->index(row, 0).data().toString();
     QString classe = ui->table_groupes->model()->index(row, 1).data().toString();
     QString noteRapport = ui->table_groupes->model()->index(row, 4).data().toString();
     QString noteApplication = ui->table_groupes->model()->index(row, 5).data().toString();
@@ -1081,8 +1108,8 @@ void MainWindow::on_btn_modifier_groupes_clicked()
     QSqlQuery query;
     query.prepare("SELECT g.ENSEIGNANT_Trilogie_ens, g.THEME_num_theme "
                   "FROM GROUPE g "
-                  "WHERE g.nom_groupe = :groupe AND g.CLASSE_num_classe = :classe");
-    query.bindValue(":groupe", nomGroupe);
+                  "WHERE g.num_groupe = :groupe AND g.CLASSE_num_classe = :classe");
+    query.bindValue(":groupe", numGroupe);
     query.bindValue(":classe", classe);
 
     QString encadreurTrilogie = "";
@@ -1097,9 +1124,9 @@ void MainWindow::on_btn_modifier_groupes_clicked()
     QStringList matriculesEtudiants;
     QSqlQuery etudiantsQuery;
     etudiantsQuery.prepare("SELECT Matricule FROM ETUDIANT "
-                           "WHERE GROUPE_nom_groupe = :groupe AND CLASSE_num_classe = :classe "
+                           "WHERE GROUPE_num_groupe = :groupe AND CLASSE_num_classe = :classe "
                            "ORDER BY Matricule");
-    etudiantsQuery.bindValue(":groupe", nomGroupe);
+    etudiantsQuery.bindValue(":groupe", numGroupe);
     etudiantsQuery.bindValue(":classe", classe);
 
     if (etudiantsQuery.exec()) {
@@ -1109,7 +1136,7 @@ void MainWindow::on_btn_modifier_groupes_clicked()
     }
 
     modif_groupe *form = new modif_groupe(this);
-    form->remplirFormulaire(nomGroupe, classe, encadreurTrilogie, themeId,
+    form->remplirFormulaire(numGroupe, classe, encadreurTrilogie, themeId,
                             matriculesEtudiants, noteRapport, noteApplication);
     form->setWindowTitle("Modifier un groupe");
     form->exec();
