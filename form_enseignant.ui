@@ -119,7 +119,11 @@ QFrame {
         </widget>
        </item>
        <item>
-        <widget class="QLineEdit" name="lineEdit"/>
+        <widget class="QLineEdit" name="lineEdit">
+         <property name="inputMask">
+          <string/>
+         </property>
+        </widget>
        </item>
       </layout>
      </item>

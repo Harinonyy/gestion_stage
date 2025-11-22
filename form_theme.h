@@ -18,8 +18,8 @@ public:
 
 private slots:
     void on_buttonBox_accepted();
-
     void on_buttonBox_rejected();
+    void genererNumeroTheme();
 
 private:
     Ui::form_theme *ui;

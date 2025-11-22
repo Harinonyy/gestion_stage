@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.16)
+ cmake_minimum_required(VERSION 3.16)
 
 project(Gestion_Stage VERSION 0.1 LANGUAGES CXX)
 
@@ -29,6 +29,9 @@ set(PROJECT_SOURCES
         form_theme.cpp
         form_theme.h
         form_theme.ui
+        modif_etudiant.cpp
+        modif_etudiant.ui
+        modif_etudiant.h
         icones.qrc
 )
 
@@ -37,6 +40,12 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
         MANUAL_FINALIZATION
         ${PROJECT_SOURCES}
         connexionbd.h connexionbd.cpp
+        modif_etudiant.h modif_etudiant.cpp modif_etudiant.ui
+        modif_groupe.h modif_groupe.cpp modif_groupe.ui
+        modif_enseignant.h modif_enseignant.cpp modif_enseignant.ui
+        modif_theme.h modif_theme.cpp modif_theme.ui
+
+
     )
 # Define target properties for Android with Qt 6 as:
 #    set_property(TARGET Gestion_Stage APPEND PROPERTY QT_ANDROID_PACKAGE_SOURCE_DIR
@@ -82,3 +91,4 @@ install(TARGETS Gestion_Stage
 if(QT_VERSION_MAJOR EQUAL 6)
     qt_finalize_executable(Gestion_Stage)
 endif()
+

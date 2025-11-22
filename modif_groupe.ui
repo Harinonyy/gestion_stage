@@ -1,0 +1,285 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>modif_groupe</class>
+ <widget class="QDialog" name="modif_groupe">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>665</width>
+    <height>744</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Dialog</string>
+  </property>
+  <widget class="QWidget" name="widget" native="true">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>20</y>
+     <width>621</width>
+     <height>711</height>
+    </rect>
+   </property>
+   <widget class="QFrame" name="frame_8">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>120</y>
+      <width>571</width>
+      <height>501</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QLabel{
+color:#333333;
+QLabel	font-size:14px;
+font: 700 9pt &quot;Segoe UI&quot;;
+}
+QLineEdit, QComboBox {
+    /* Hauteur standard pour le champ */
+    min-height: 30px; 
+    /* Arrière-plan */
+    background-color: white; 
+    /* Bordure fine */
+    border: 1px solid #CCCCCC;
+    /* Coins légèrement arrondis */
+    border-radius: 8px; 
+    /* Espace interne pour le texte */
+    padding: 0 10px; 
+}
+
+/* Style au survol ou à la sélection pour un feedback visuel */
+QLineEdit:focus, QComboBox:focus {
+    border: 2px solid #007BFF; /* Bordure bleue plus épaisse */
+}
+QFrame {
+    /* Blanc cassé pour le conteneur des champs */
+    background-color: #FAFAFA; 
+    border-radius: 10px; /* Optionnel : pour les bords internes */
+    /* Ajouter un peu d'ombre pour le faire ressortir (un peu plus complexe, mais très bel effet) */
+    /* box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1); */
+}</string>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::Shape::StyledPanel</enum>
+    </property>
+    <property name="frameShadow">
+     <enum>QFrame::Shadow::Raised</enum>
+    </property>
+    <layout class="QVBoxLayout" name="verticalLayout_8">
+     <item>
+      <layout class="QHBoxLayout" name="horizontalLayout_11">
+       <item>
+        <widget class="QLabel" name="label_14">
+         <property name="text">
+          <string> Classe :</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QComboBox" name="comboBox_7">
+         <item>
+          <property name="text">
+           <string>L1</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>M1</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <layout class="QHBoxLayout" name="horizontalLayout_12">
+       <property name="spacing">
+        <number>0</number>
+       </property>
+       <property name="sizeConstraint">
+        <enum>QLayout::SizeConstraint::SetDefaultConstraint</enum>
+       </property>
+       <property name="rightMargin">
+        <number>0</number>
+       </property>
+       <item>
+        <widget class="QLabel" name="label_15">
+         <property name="text">
+          <string> Nom Groupe :                                    </string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLineEdit" name="lineEdit_13"/>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <layout class="QHBoxLayout" name="horizontalLayout_13">
+       <item>
+        <widget class="QLabel" name="label_16">
+         <property name="text">
+          <string>Encadreur :</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QComboBox" name="comboBox_8"/>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <layout class="QHBoxLayout" name="horizontalLayout_14">
+       <item>
+        <widget class="QLabel" name="label_17">
+         <property name="text">
+          <string>Theme attribué :</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QComboBox" name="comboBox_9"/>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <layout class="QHBoxLayout" name="horizontalLayout_15">
+       <item>
+        <widget class="QLabel" name="label_18">
+         <property name="text">
+          <string>Etudiants membres :</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLineEdit" name="lineEdit_14"/>
+       </item>
+       <item>
+        <widget class="QLineEdit" name="lineEdit_15"/>
+       </item>
+       <item>
+        <widget class="QLineEdit" name="lineEdit_16"/>
+       </item>
+       <item>
+        <widget class="QLineEdit" name="lineEdit_17"/>
+       </item>
+       <item>
+        <widget class="QLineEdit" name="lineEdit_18"/>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <layout class="QHBoxLayout" name="horizontalLayout_16">
+       <item>
+        <widget class="QLabel" name="label_19">
+         <property name="text">
+          <string>Note Rapport :                                  </string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLineEdit" name="lineEdit_19"/>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <layout class="QHBoxLayout" name="horizontalLayout_17">
+       <item>
+        <widget class="QLabel" name="label_20">
+         <property name="text">
+          <string>Note Application :                           </string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLineEdit" name="lineEdit_20"/>
+       </item>
+      </layout>
+     </item>
+    </layout>
+   </widget>
+   <widget class="QFrame" name="frame_9">
+    <property name="geometry">
+     <rect>
+      <x>410</x>
+      <y>630</y>
+      <width>191</width>
+      <height>53</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QDialogButtonBox{
+background-color: #28a745; 
+color: white;
+ border-radius: 8px;
+ font-weight: bold;
+ padding: 5px 15px;
+}</string>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::Shape::StyledPanel</enum>
+    </property>
+    <property name="frameShadow">
+     <enum>QFrame::Shadow::Raised</enum>
+    </property>
+    <layout class="QVBoxLayout" name="verticalLayout_9">
+     <item>
+      <widget class="QDialogButtonBox" name="buttonBox_3">
+       <property name="orientation">
+        <enum>Qt::Orientation::Horizontal</enum>
+       </property>
+       <property name="standardButtons">
+        <set>QDialogButtonBox::StandardButton::Cancel|QDialogButtonBox::StandardButton::Ok</set>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+   <widget class="QFrame" name="frame">
+    <property name="geometry">
+     <rect>
+      <x>30</x>
+      <y>10</y>
+      <width>551</width>
+      <height>91</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QLabel#label {
+    /* Couleur du texte, cohérente avec votre interface */
+    color: #004D99; 
+    /* Taille de police beaucoup plus grande */
+    font-size: 24px; 
+    /* Police en gras */
+    font-weight: bold;
+    /* Marge interne pour l'espacement */
+    padding: 20px 0 10px 20px;
+}</string>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::Shape::StyledPanel</enum>
+    </property>
+    <property name="frameShadow">
+     <enum>QFrame::Shadow::Raised</enum>
+    </property>
+    <layout class="QVBoxLayout" name="verticalLayout_2">
+     <item>
+      <widget class="QLabel" name="label">
+       <property name="styleSheet">
+        <string notr="true"/>
+       </property>
+       <property name="text">
+        <string>            Informations du groupe</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

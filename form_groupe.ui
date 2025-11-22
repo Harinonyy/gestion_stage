@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>644</width>
-    <height>701</height>
+    <width>652</width>
+    <height>778</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -16,10 +16,10 @@
   <widget class="QWidget" name="widget" native="true">
    <property name="geometry">
     <rect>
-     <x>20</x>
+     <x>10</x>
      <y>10</y>
-     <width>611</width>
-     <height>676</height>
+     <width>631</width>
+     <height>771</height>
     </rect>
    </property>
    <widget class="QFrame" name="frame">
@@ -27,7 +27,7 @@
      <rect>
       <x>30</x>
       <y>0</y>
-      <width>561</width>
+      <width>551</width>
       <height>91</height>
      </rect>
     </property>
@@ -65,10 +65,10 @@
    <widget class="QFrame" name="frame_2">
     <property name="geometry">
      <rect>
-      <x>50</x>
+      <x>10</x>
       <y>100</y>
-      <width>511</width>
-      <height>501</height>
+      <width>591</width>
+      <height>601</height>
      </rect>
     </property>
     <property name="styleSheet">
@@ -114,12 +114,23 @@ QFrame {
        <item>
         <widget class="QLabel" name="label_2">
          <property name="text">
-          <string>Nom du Groupe:</string>
+          <string> Classe :</string>
          </property>
         </widget>
        </item>
        <item>
-        <widget class="QLineEdit" name="lineEdit"/>
+        <widget class="QComboBox" name="comboBox">
+         <item>
+          <property name="text">
+           <string>L1</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>M1</string>
+          </property>
+         </item>
+        </widget>
        </item>
       </layout>
      </item>
@@ -137,12 +148,12 @@ QFrame {
        <item>
         <widget class="QLabel" name="label_3">
          <property name="text">
-          <string>Classe :</string>
+          <string> Nom Groupe :                                    </string>
          </property>
         </widget>
        </item>
        <item>
-        <widget class="QComboBox" name="comboBox"/>
+        <widget class="QLineEdit" name="lineEdit"/>
        </item>
       </layout>
      </item>
@@ -163,9 +174,9 @@ QFrame {
      <item>
       <layout class="QHBoxLayout" name="horizontalLayout_4">
        <item>
-        <widget class="QLabel" name="label_5">
+        <widget class="QLabel" name="label_7">
          <property name="text">
-          <string>Theme attribue :</string>
+          <string>Parcours du Theme :</string>
          </property>
         </widget>
        </item>
@@ -175,11 +186,11 @@ QFrame {
       </layout>
      </item>
      <item>
-      <layout class="QHBoxLayout" name="horizontalLayout_5">
+      <layout class="QHBoxLayout" name="horizontalLayout_6">
        <item>
-        <widget class="QLabel" name="label_6">
+        <widget class="QLabel" name="label_5">
          <property name="text">
-          <string>Observation :</string>
+          <string>Theme attribué :</string>
          </property>
         </widget>
        </item>
@@ -188,13 +199,39 @@ QFrame {
        </item>
       </layout>
      </item>
+     <item>
+      <layout class="QHBoxLayout" name="horizontalLayout_5">
+       <item>
+        <widget class="QLabel" name="label_6">
+         <property name="text">
+          <string>Etudiants membres :</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLineEdit" name="lineEdit_2"/>
+       </item>
+       <item>
+        <widget class="QLineEdit" name="lineEdit_3"/>
+       </item>
+       <item>
+        <widget class="QLineEdit" name="lineEdit_4"/>
+       </item>
+       <item>
+        <widget class="QLineEdit" name="lineEdit_5"/>
+       </item>
+       <item>
+        <widget class="QLineEdit" name="lineEdit_6"/>
+       </item>
+      </layout>
+     </item>
     </layout>
    </widget>
    <widget class="QFrame" name="frame_3">
     <property name="geometry">
      <rect>
-      <x>390</x>
-      <y>620</y>
+      <x>400</x>
+      <y>690</y>
       <width>191</width>
       <height>53</height>
      </rect>
