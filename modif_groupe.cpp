@@ -54,14 +54,13 @@ modif_groupe::modif_groupe(QWidget *parent) :
         }
     }
 
-    // theme
+    // theme - initialiser vide d'abord
     ui->comboBox_9->clear();
     ui->comboBox_9->addItem("Sélectionner Thème", "");
-    if (query.exec("SELECT num_theme, libelle FROM THEME ORDER BY libelle")) {
-        while (query.next()) {
-            ui->comboBox_9->addItem(query.value(1).toString(), query.value(0));
-        }
-    }
+
+    // theme encadreur - connexion pour charger les thèmes quand l'encadreur change
+    connect(ui->comboBox_8, QOverload<int>::of(&QComboBox::currentIndexChanged),
+            this, &modif_groupe::onEncadreurChanged);
 
     connect(ui->buttonBox_3, &QDialogButtonBox::accepted, this, &modif_groupe::on_buttonBox_accepted);
     connect(ui->buttonBox_3, &QDialogButtonBox::rejected, this, &modif_groupe::reject);
@@ -70,6 +69,36 @@ modif_groupe::modif_groupe(QWidget *parent) :
 modif_groupe::~modif_groupe()
 {
     delete ui;
+}
+
+// theme encadreur - fonction pour charger les thèmes par encadreur
+void modif_groupe::onEncadreurChanged(int index)
+{
+    QString trilogieEncadreur = ui->comboBox_8->currentData().toString();
+    chargerThemesParEncadreur(trilogieEncadreur);
+}
+
+// theme encadreur - fonction pour charger les thèmes d'un encadreur spécifique
+void modif_groupe::chargerThemesParEncadreur(const QString& trilogieEncadreur)
+{
+    ui->comboBox_9->clear();
+    ui->comboBox_9->addItem("Sélectionner Thème", "");
+
+    if (trilogieEncadreur.isEmpty()) {
+        return; // Pas d'encadreur sélectionné
+    }
+
+    QSqlQuery query;
+    query.prepare("SELECT num_theme, libelle FROM THEME WHERE ENSEIGNANT_Trilogie_ens = :trilogie ORDER BY libelle");
+    query.bindValue(":trilogie", trilogieEncadreur);
+
+    if (query.exec()) {
+        while (query.next()) {
+            ui->comboBox_9->addItem(query.value(1).toString(), query.value(0));
+        }
+    } else {
+        qDebug() << "Erreur chargement thèmes encadreur:" << query.lastError().text();
+    }
 }
 
 void modif_groupe::remplirFormulaire(const QString& nomGroupe, const QString& classe,
@@ -103,6 +132,8 @@ void modif_groupe::remplirFormulaire(const QString& nomGroupe, const QString& cl
         }
     }
 
+    // theme encadreur - charger les thèmes de cet encadreur avant de sélectionner
+    chargerThemesParEncadreur(encadreur);
 
     for (int i = 0; i < ui->comboBox_9->count(); ++i) {
         if (ui->comboBox_9->itemData(i).toString() == theme) {

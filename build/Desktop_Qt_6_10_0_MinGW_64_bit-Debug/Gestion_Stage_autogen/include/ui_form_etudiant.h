@@ -12,7 +12,6 @@
 #include <QtCore/QVariant>
 #include <QtWidgets/QAbstractButton>
 #include <QtWidgets/QApplication>
-#include <QtWidgets/QComboBox>
 #include <QtWidgets/QDialog>
 #include <QtWidgets/QDialogButtonBox>
 #include <QtWidgets/QFrame>
@@ -49,9 +48,6 @@ public:
     QHBoxLayout *horizontalLayout_5;
     QLabel *label_6;
     QLineEdit *lineEdit_5;
-    QHBoxLayout *horizontalLayout_6;
-    QLabel *label_7;
-    QComboBox *comboBox_classe;
     QFrame *frame_3;
     QVBoxLayout *verticalLayout_3;
     QDialogButtonBox *buttonBox;
@@ -206,34 +202,6 @@ public:
 
         verticalLayout->addLayout(horizontalLayout_5);
 
-        horizontalLayout_6 = new QHBoxLayout();
-        horizontalLayout_6->setObjectName("horizontalLayout_6");
-        label_7 = new QLabel(frame_2);
-        label_7->setObjectName("label_7");
-
-        horizontalLayout_6->addWidget(label_7);
-
-        comboBox_classe = new QComboBox(frame_2);
-        comboBox_classe->addItem(QString());
-        comboBox_classe->addItem(QString());
-        comboBox_classe->addItem(QString());
-        comboBox_classe->addItem(QString());
-        comboBox_classe->addItem(QString());
-        comboBox_classe->addItem(QString());
-        comboBox_classe->addItem(QString());
-        comboBox_classe->addItem(QString());
-        comboBox_classe->addItem(QString());
-        comboBox_classe->addItem(QString());
-        comboBox_classe->addItem(QString());
-        comboBox_classe->addItem(QString());
-        comboBox_classe->addItem(QString());
-        comboBox_classe->setObjectName("comboBox_classe");
-
-        horizontalLayout_6->addWidget(comboBox_classe);
-
-
-        verticalLayout->addLayout(horizontalLayout_6);
-
         frame_3 = new QFrame(widget);
         frame_3->setObjectName("frame_3");
         frame_3->setGeometry(QRect(360, 600, 191, 53));
@@ -275,21 +243,6 @@ public:
         label_4->setText(QCoreApplication::translate("form_etudiant", "Prenom(s) :", nullptr));
         label_5->setText(QCoreApplication::translate("form_etudiant", "Email :", nullptr));
         label_6->setText(QCoreApplication::translate("form_etudiant", "Telephone :", nullptr));
-        label_7->setText(QCoreApplication::translate("form_etudiant", "Classe:", nullptr));
-        comboBox_classe->setItemText(0, QCoreApplication::translate("form_etudiant", "L1_IG1", nullptr));
-        comboBox_classe->setItemText(1, QCoreApplication::translate("form_etudiant", "L1_IG2", nullptr));
-        comboBox_classe->setItemText(2, QCoreApplication::translate("form_etudiant", "L1_PRO1", nullptr));
-        comboBox_classe->setItemText(3, QCoreApplication::translate("form_etudiant", "L1_PRO2", nullptr));
-        comboBox_classe->setItemText(4, QCoreApplication::translate("form_etudiant", "L1_MDI1", nullptr));
-        comboBox_classe->setItemText(5, QCoreApplication::translate("form_etudiant", "L1_MDI2", nullptr));
-        comboBox_classe->setItemText(6, QCoreApplication::translate("form_etudiant", "M1_IG1", nullptr));
-        comboBox_classe->setItemText(7, QCoreApplication::translate("form_etudiant", "M1_IG2", nullptr));
-        comboBox_classe->setItemText(8, QCoreApplication::translate("form_etudiant", "M1_GB1", nullptr));
-        comboBox_classe->setItemText(9, QCoreApplication::translate("form_etudiant", "M1_GB2", nullptr));
-        comboBox_classe->setItemText(10, QCoreApplication::translate("form_etudiant", "M_1ASR", nullptr));
-        comboBox_classe->setItemText(11, QCoreApplication::translate("form_etudiant", "M1_GID", nullptr));
-        comboBox_classe->setItemText(12, QCoreApplication::translate("form_etudiant", "M1_OCC", nullptr));
-
     } // retranslateUi
 
 };

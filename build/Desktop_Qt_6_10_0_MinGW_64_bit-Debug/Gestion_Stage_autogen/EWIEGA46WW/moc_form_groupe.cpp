@@ -42,7 +42,6 @@ template <> constexpr inline auto form_groupe::qt_create_metaobjectdata<qt_meta_
         "on_comboBox_currentIndexChanged",
         "",
         "index",
-        "on_comboBox_3_currentIndexChanged",
         "on_buttonBox_accepted",
         "on_buttonBox_rejected"
     };
@@ -52,14 +51,10 @@ template <> constexpr inline auto form_groupe::qt_create_metaobjectdata<qt_meta_
         QtMocHelpers::SlotData<void(int)>(1, 2, QMC::AccessPrivate, QMetaType::Void, {{
             { QMetaType::Int, 3 },
         }}),
-        // Slot 'on_comboBox_3_currentIndexChanged'
-        QtMocHelpers::SlotData<void(int)>(4, 2, QMC::AccessPrivate, QMetaType::Void, {{
-            { QMetaType::Int, 3 },
-        }}),
         // Slot 'on_buttonBox_accepted'
-        QtMocHelpers::SlotData<void()>(5, 2, QMC::AccessPrivate, QMetaType::Void),
+        QtMocHelpers::SlotData<void()>(4, 2, QMC::AccessPrivate, QMetaType::Void),
         // Slot 'on_buttonBox_rejected'
-        QtMocHelpers::SlotData<void()>(6, 2, QMC::AccessPrivate, QMetaType::Void),
+        QtMocHelpers::SlotData<void()>(5, 2, QMC::AccessPrivate, QMetaType::Void),
     };
     QtMocHelpers::UintData qt_properties {
     };
@@ -84,9 +79,8 @@ void form_groupe::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id,
     if (_c == QMetaObject::InvokeMetaMethod) {
         switch (_id) {
         case 0: _t->on_comboBox_currentIndexChanged((*reinterpret_cast<std::add_pointer_t<int>>(_a[1]))); break;
-        case 1: _t->on_comboBox_3_currentIndexChanged((*reinterpret_cast<std::add_pointer_t<int>>(_a[1]))); break;
-        case 2: _t->on_buttonBox_accepted(); break;
-        case 3: _t->on_buttonBox_rejected(); break;
+        case 1: _t->on_buttonBox_accepted(); break;
+        case 2: _t->on_buttonBox_rejected(); break;
         default: ;
         }
     }
@@ -111,14 +105,14 @@ int form_groupe::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 4)
+        if (_id < 3)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 4;
+        _id -= 3;
     }
     if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 4)
+        if (_id < 3)
             *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType();
-        _id -= 4;
+        _id -= 3;
     }
     return _id;
 }

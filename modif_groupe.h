@@ -21,9 +21,12 @@ public:
                            const QString& noteRapport, const QString& noteApplication);
 
 private slots:
-    void on_buttonBox_accepted();
     void on_comboBox_7_currentIndexChanged(int index);
     void on_comboBox_9_currentIndexChanged(int index);
+    void on_buttonBox_accepted();
+
+    void onEncadreurChanged(int index);
+    void chargerThemesParEncadreur(const QString& trilogieEncadreur);
 
 private:
     Ui::modif_groupe *ui;

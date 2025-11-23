@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>665</width>
+    <width>696</width>
     <height>744</height>
    </rect>
   </property>
@@ -18,7 +18,7 @@
     <rect>
      <x>20</x>
      <y>20</y>
-     <width>621</width>
+     <width>631</width>
      <height>711</height>
     </rect>
    </property>
@@ -27,7 +27,7 @@
      <rect>
       <x>20</x>
       <y>120</y>
-      <width>571</width>
+      <width>591</width>
       <height>501</height>
      </rect>
     </property>
@@ -68,7 +68,7 @@ QFrame {
     <property name="frameShadow">
      <enum>QFrame::Shadow::Raised</enum>
     </property>
-    <layout class="QVBoxLayout" name="verticalLayout_8">
+    <layout class="QVBoxLayout" name="verticalLayout">
      <item>
       <layout class="QHBoxLayout" name="horizontalLayout_11">
        <item>
@@ -108,7 +108,7 @@ QFrame {
        <item>
         <widget class="QLabel" name="label_15">
          <property name="text">
-          <string> Nom Groupe :                                    </string>
+          <string> Numéro Groupe :                                    </string>
          </property>
         </widget>
        </item>
@@ -128,6 +128,20 @@ QFrame {
        </item>
        <item>
         <widget class="QComboBox" name="comboBox_8"/>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <layout class="QHBoxLayout" name="horizontalLayout_18">
+       <item>
+        <widget class="QLabel" name="label_21">
+         <property name="text">
+          <string>Parcours ciblé :</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QComboBox" name="comboBox_10"/>
        </item>
       </layout>
      </item>

@@ -39,15 +39,6 @@ public:
     QHBoxLayout *horizontalLayout_2;
     QLabel *label_3;
     QLineEdit *lineEdit;
-    QHBoxLayout *horizontalLayout_3;
-    QLabel *label_4;
-    QComboBox *comboBox_2;
-    QHBoxLayout *horizontalLayout_4;
-    QLabel *label_7;
-    QComboBox *comboBox_3;
-    QHBoxLayout *horizontalLayout_6;
-    QLabel *label_5;
-    QComboBox *comboBox_4;
     QHBoxLayout *horizontalLayout_5;
     QLabel *label_6;
     QLineEdit *lineEdit_2;
@@ -162,51 +153,6 @@ public:
 
         verticalLayout->addLayout(horizontalLayout_2);
 
-        horizontalLayout_3 = new QHBoxLayout();
-        horizontalLayout_3->setObjectName("horizontalLayout_3");
-        label_4 = new QLabel(frame_2);
-        label_4->setObjectName("label_4");
-
-        horizontalLayout_3->addWidget(label_4);
-
-        comboBox_2 = new QComboBox(frame_2);
-        comboBox_2->setObjectName("comboBox_2");
-
-        horizontalLayout_3->addWidget(comboBox_2);
-
-
-        verticalLayout->addLayout(horizontalLayout_3);
-
-        horizontalLayout_4 = new QHBoxLayout();
-        horizontalLayout_4->setObjectName("horizontalLayout_4");
-        label_7 = new QLabel(frame_2);
-        label_7->setObjectName("label_7");
-
-        horizontalLayout_4->addWidget(label_7);
-
-        comboBox_3 = new QComboBox(frame_2);
-        comboBox_3->setObjectName("comboBox_3");
-
-        horizontalLayout_4->addWidget(comboBox_3);
-
-
-        verticalLayout->addLayout(horizontalLayout_4);
-
-        horizontalLayout_6 = new QHBoxLayout();
-        horizontalLayout_6->setObjectName("horizontalLayout_6");
-        label_5 = new QLabel(frame_2);
-        label_5->setObjectName("label_5");
-
-        horizontalLayout_6->addWidget(label_5);
-
-        comboBox_4 = new QComboBox(frame_2);
-        comboBox_4->setObjectName("comboBox_4");
-
-        horizontalLayout_6->addWidget(comboBox_4);
-
-
-        verticalLayout->addLayout(horizontalLayout_6);
-
         horizontalLayout_5 = new QHBoxLayout();
         horizontalLayout_5->setObjectName("horizontalLayout_5");
         label_6 = new QLabel(frame_2);
@@ -280,9 +226,6 @@ public:
         comboBox->setItemText(1, QCoreApplication::translate("form_groupe", "M1", nullptr));
 
         label_3->setText(QCoreApplication::translate("form_groupe", " Nom Groupe :                                    ", nullptr));
-        label_4->setText(QCoreApplication::translate("form_groupe", "Encadreur :", nullptr));
-        label_7->setText(QCoreApplication::translate("form_groupe", "Parcours du Theme :", nullptr));
-        label_5->setText(QCoreApplication::translate("form_groupe", "Theme attribu\303\251 :", nullptr));
         label_6->setText(QCoreApplication::translate("form_groupe", "Etudiants membres :", nullptr));
     } // retranslateUi
 

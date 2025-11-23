@@ -22,9 +22,9 @@ form_groupe::form_groupe(QWidget *parent) :
     }
 
     chargerClasses();
-    chargerParcours();
+    /* chargerParcours();
     chargerEncadreurs();
-    chargerThemes();
+    chargerThemes(); */
 
     ui->lineEdit->setEnabled(false);
 
@@ -58,7 +58,7 @@ void form_groupe::chargerClasses()
     }
 }
 
-// affiche parcours
+/* affiche parcours
 void form_groupe::chargerParcours()
 {
     ui->comboBox_3->clear();
@@ -122,7 +122,7 @@ void form_groupe::chargerEncadreurs()
         qDebug() << "Erreur chargerEncadreurs:" << query.lastError().text();
     }
 }
-
+*/
 // incrementatino n+1
 QString form_groupe::calculerNomGroupeSuivant(const QString& numClasse)
 {
@@ -159,7 +159,7 @@ void form_groupe::on_comboBox_currentIndexChanged(int index)
     ui->lineEdit->setText(nouveauNom);
 }
 
-void form_groupe::on_comboBox_3_currentIndexChanged(int index)
+/*void form_groupe::on_comboBox_3_currentIndexChanged(int index)
 {
     QString codeParcours = ui->comboBox_3->currentData().toString();
 
@@ -169,13 +169,13 @@ void form_groupe::on_comboBox_3_currentIndexChanged(int index)
         chargerThemes(codeParcours);
     }
 }
-
+*/
 void form_groupe::on_buttonBox_accepted()
 {
     QString nomGroupe = ui->lineEdit->text();
     QString numClasse = ui->comboBox->currentData().toString();
-    QString encadreur = ui->comboBox_2->currentData().toString();
-    QString theme = ui->comboBox_4->currentData().toString();
+    /*QString encadreur = ui->comboBox_2->currentData().toString();
+    QString theme = ui->comboBox_4->currentData().toString();*/
 
     // recup des matricule
     QStringList matricules;
@@ -186,7 +186,7 @@ void form_groupe::on_buttonBox_accepted()
     if (!ui->lineEdit_6->text().isEmpty()) matricules << ui->lineEdit_6->text();
 
     // validation
-    if (numClasse.isEmpty() || encadreur.isEmpty() || theme.isEmpty()) {
+    if (numClasse.isEmpty() /*|| encadreur.isEmpty() || theme.isEmpty()*/) {
         QMessageBox::warning(this, "Champs obligatoires", "Classe, encadreur et thème sont obligatoires !");
         return;
     }
@@ -224,8 +224,8 @@ void form_groupe::on_buttonBox_accepted()
                   "VALUES (:nom, :classe, :encadreur, :theme)");
     query.bindValue(":nom", nomGroupe);
     query.bindValue(":classe", numClasse);
-    query.bindValue(":encadreur", encadreur);
-    query.bindValue(":theme", theme);
+   /* query.bindValue(":encadreur", encadreur);
+    query.bindValue(":theme", theme);*/
 
     if (!query.exec()) {
         QMessageBox::critical(this, "Erreur", "Erreur création groupe: " + query.lastError().text());

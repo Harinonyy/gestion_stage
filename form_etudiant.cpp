@@ -90,13 +90,14 @@ void form_etudiant::on_buttonBox_accepted()
     } else {
         QSqlQuery etudiant(db);
 
-        etudiant.prepare("INSERT INTO ETUDIANT (Matricule, Nom_etudiant, Prenom_etudiant, Telephone_etudiant, Mail_etudiant, GROUPE_num_groupe) "
-                         "VALUES (:matricule, :nom, :prenom, :telephone, :mail, NULL)");
+        etudiant.prepare("INSERT INTO ETUDIANT (Matricule, Nom_etudiant, Prenom_etudiant, Telephone_etudiant, Mail_etudiant, GROUPE_num_groupe, CLASSE_num_classe) "
+                         "VALUES (:matricule, :nom, :prenom, :telephone, :mail, NULL, NULL)");
 
         etudiant.bindValue(":matricule", matricule);
         etudiant.bindValue(":nom", nom);
         etudiant.bindValue(":prenom", prenom);
         etudiant.bindValue(":telephone", telephone);
+
 
         if (mail.isEmpty()) {
             etudiant.bindValue(":mail", QVariant(QMetaType::fromType<QString>()));

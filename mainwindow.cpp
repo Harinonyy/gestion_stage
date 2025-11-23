@@ -228,7 +228,7 @@ void MainWindow::loadEtudiants(const QString& sqlFilter)
     QString queryStr = "SELECT "
                        "E.Matricule, E.Nom_etudiant, E.Prenom_etudiant, "
                        "E.Telephone_etudiant, E.Mail_etudiant, "
-                       "COALESCE(G.CLASSE_num_classe, 'Sans classe') AS Classe, "
+                       "E.CLASSE_num_classe, "
                        "COALESCE(E.GROUPE_num_groupe, 'Sans groupe') AS Groupe, "
                        "E.note_presentation "
                        "FROM ETUDIANT E "
@@ -400,9 +400,6 @@ void MainWindow::loadEvaluationTable(const QString& sqlFilter, bool isSimpleMode
         QMessageBox::critical(this, "Erreur BD", "Impossible de charger l'évaluation.");
         return;
     }
-
-    qDebug() << "Requête évaluation:" << queryStr;
-    qDebug() << "Nombre de lignes retournées:" << query.size();
 
     if (isSimpleMode || !sqlFilter.isEmpty())
     {
@@ -1148,3 +1145,19 @@ void MainWindow::on_btn_modifier_groupes_clicked()
     loadGroupes();
     loadEtudiants();
 }
+
+/*void MainWindow::fixStudentClasses()
+{
+    QSqlQuery query;
+    query.prepare("UPDATE ETUDIANT E "
+                  "JOIN GROUPE G ON E.GROUPE_num_groupe = G.num_groupe "
+                  "SET E.CLASSE_num_classe = G.CLASSE_num_classe "
+                  "WHERE E.CLASSE_num_classe IS NULL");
+
+    if(query.exec()) {
+        qDebug() << "Student classes updated";
+    } else {
+        qDebug() << "Error:" << query.lastError().text();
+    }
+}
+*/

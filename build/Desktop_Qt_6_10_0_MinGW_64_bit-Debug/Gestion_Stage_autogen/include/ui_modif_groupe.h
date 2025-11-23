@@ -29,7 +29,7 @@ class Ui_modif_groupe
 public:
     QWidget *widget;
     QFrame *frame_8;
-    QVBoxLayout *verticalLayout_8;
+    QVBoxLayout *verticalLayout;
     QHBoxLayout *horizontalLayout_11;
     QLabel *label_14;
     QComboBox *comboBox_7;
@@ -39,6 +39,9 @@ public:
     QHBoxLayout *horizontalLayout_13;
     QLabel *label_16;
     QComboBox *comboBox_8;
+    QHBoxLayout *horizontalLayout_18;
+    QLabel *label_21;
+    QComboBox *comboBox_10;
     QHBoxLayout *horizontalLayout_14;
     QLabel *label_17;
     QComboBox *comboBox_9;
@@ -66,13 +69,13 @@ public:
     {
         if (modif_groupe->objectName().isEmpty())
             modif_groupe->setObjectName("modif_groupe");
-        modif_groupe->resize(665, 744);
+        modif_groupe->resize(696, 744);
         widget = new QWidget(modif_groupe);
         widget->setObjectName("widget");
-        widget->setGeometry(QRect(20, 20, 621, 711));
+        widget->setGeometry(QRect(20, 20, 631, 711));
         frame_8 = new QFrame(widget);
         frame_8->setObjectName("frame_8");
-        frame_8->setGeometry(QRect(20, 120, 571, 501));
+        frame_8->setGeometry(QRect(20, 120, 591, 501));
         frame_8->setStyleSheet(QString::fromUtf8("QLabel{\n"
 "color:#333333;\n"
 "QLabel	font-size:14px;\n"
@@ -105,8 +108,8 @@ public:
 "}"));
         frame_8->setFrameShape(QFrame::Shape::StyledPanel);
         frame_8->setFrameShadow(QFrame::Shadow::Raised);
-        verticalLayout_8 = new QVBoxLayout(frame_8);
-        verticalLayout_8->setObjectName("verticalLayout_8");
+        verticalLayout = new QVBoxLayout(frame_8);
+        verticalLayout->setObjectName("verticalLayout");
         horizontalLayout_11 = new QHBoxLayout();
         horizontalLayout_11->setObjectName("horizontalLayout_11");
         label_14 = new QLabel(frame_8);
@@ -122,7 +125,7 @@ public:
         horizontalLayout_11->addWidget(comboBox_7);
 
 
-        verticalLayout_8->addLayout(horizontalLayout_11);
+        verticalLayout->addLayout(horizontalLayout_11);
 
         horizontalLayout_12 = new QHBoxLayout();
         horizontalLayout_12->setSpacing(0);
@@ -140,7 +143,7 @@ public:
         horizontalLayout_12->addWidget(lineEdit_13);
 
 
-        verticalLayout_8->addLayout(horizontalLayout_12);
+        verticalLayout->addLayout(horizontalLayout_12);
 
         horizontalLayout_13 = new QHBoxLayout();
         horizontalLayout_13->setObjectName("horizontalLayout_13");
@@ -155,7 +158,22 @@ public:
         horizontalLayout_13->addWidget(comboBox_8);
 
 
-        verticalLayout_8->addLayout(horizontalLayout_13);
+        verticalLayout->addLayout(horizontalLayout_13);
+
+        horizontalLayout_18 = new QHBoxLayout();
+        horizontalLayout_18->setObjectName("horizontalLayout_18");
+        label_21 = new QLabel(frame_8);
+        label_21->setObjectName("label_21");
+
+        horizontalLayout_18->addWidget(label_21);
+
+        comboBox_10 = new QComboBox(frame_8);
+        comboBox_10->setObjectName("comboBox_10");
+
+        horizontalLayout_18->addWidget(comboBox_10);
+
+
+        verticalLayout->addLayout(horizontalLayout_18);
 
         horizontalLayout_14 = new QHBoxLayout();
         horizontalLayout_14->setObjectName("horizontalLayout_14");
@@ -170,7 +188,7 @@ public:
         horizontalLayout_14->addWidget(comboBox_9);
 
 
-        verticalLayout_8->addLayout(horizontalLayout_14);
+        verticalLayout->addLayout(horizontalLayout_14);
 
         horizontalLayout_15 = new QHBoxLayout();
         horizontalLayout_15->setObjectName("horizontalLayout_15");
@@ -205,7 +223,7 @@ public:
         horizontalLayout_15->addWidget(lineEdit_18);
 
 
-        verticalLayout_8->addLayout(horizontalLayout_15);
+        verticalLayout->addLayout(horizontalLayout_15);
 
         horizontalLayout_16 = new QHBoxLayout();
         horizontalLayout_16->setObjectName("horizontalLayout_16");
@@ -220,7 +238,7 @@ public:
         horizontalLayout_16->addWidget(lineEdit_19);
 
 
-        verticalLayout_8->addLayout(horizontalLayout_16);
+        verticalLayout->addLayout(horizontalLayout_16);
 
         horizontalLayout_17 = new QHBoxLayout();
         horizontalLayout_17->setObjectName("horizontalLayout_17");
@@ -235,7 +253,7 @@ public:
         horizontalLayout_17->addWidget(lineEdit_20);
 
 
-        verticalLayout_8->addLayout(horizontalLayout_17);
+        verticalLayout->addLayout(horizontalLayout_17);
 
         frame_9 = new QFrame(widget);
         frame_9->setObjectName("frame_9");
@@ -294,8 +312,9 @@ public:
         comboBox_7->setItemText(0, QCoreApplication::translate("modif_groupe", "L1", nullptr));
         comboBox_7->setItemText(1, QCoreApplication::translate("modif_groupe", "M1", nullptr));
 
-        label_15->setText(QCoreApplication::translate("modif_groupe", " Nom Groupe :                                    ", nullptr));
+        label_15->setText(QCoreApplication::translate("modif_groupe", " Num\303\251ro Groupe :                                    ", nullptr));
         label_16->setText(QCoreApplication::translate("modif_groupe", "Encadreur :", nullptr));
+        label_21->setText(QCoreApplication::translate("modif_groupe", "Parcours cibl\303\251 :", nullptr));
         label_17->setText(QCoreApplication::translate("modif_groupe", "Theme attribu\303\251 :", nullptr));
         label_18->setText(QCoreApplication::translate("modif_groupe", "Etudiants membres :", nullptr));
         label_19->setText(QCoreApplication::translate("modif_groupe", "Note Rapport :                                  ", nullptr));
