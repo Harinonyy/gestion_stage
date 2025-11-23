@@ -25,7 +25,9 @@ private slots:
     void on_comboBox_9_currentIndexChanged(int index);
     void on_buttonBox_accepted();
 
+
     void onEncadreurChanged(int index);
+    void onParcoursChanged(int index);
     void chargerThemesParEncadreur(const QString& trilogieEncadreur);
 
 private:

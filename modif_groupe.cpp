@@ -54,13 +54,27 @@ modif_groupe::modif_groupe(QWidget *parent) :
         }
     }
 
-    // theme - initialiser vide d'abord
+    // parcours cible
+    ui->comboBox_10->clear();
+    ui->comboBox_10->addItem("Tous les parcours", "");
+    ui->comboBox_10->addItem("Thèmes génériques", "generique");
+    if (query.exec("SELECT code_parcours FROM PARCOURS ORDER BY code_parcours")) {
+        while (query.next()) {
+            ui->comboBox_10->addItem(query.value(0).toString(), query.value(0));
+        }
+    }
+
+    // theme
     ui->comboBox_9->clear();
     ui->comboBox_9->addItem("Sélectionner Thème", "");
 
-    // theme encadreur - connexion pour charger les thèmes quand l'encadreur change
+    // theme encadreur
     connect(ui->comboBox_8, QOverload<int>::of(&QComboBox::currentIndexChanged),
             this, &modif_groupe::onEncadreurChanged);
+
+
+    connect(ui->comboBox_10, QOverload<int>::of(&QComboBox::currentIndexChanged),
+            this, &modif_groupe::onParcoursChanged);
 
     connect(ui->buttonBox_3, &QDialogButtonBox::accepted, this, &modif_groupe::on_buttonBox_accepted);
     connect(ui->buttonBox_3, &QDialogButtonBox::rejected, this, &modif_groupe::reject);
@@ -71,25 +85,44 @@ modif_groupe::~modif_groupe()
     delete ui;
 }
 
-// theme encadreur - fonction pour charger les thèmes par encadreur
 void modif_groupe::onEncadreurChanged(int index)
 {
     QString trilogieEncadreur = ui->comboBox_8->currentData().toString();
     chargerThemesParEncadreur(trilogieEncadreur);
 }
 
-// theme encadreur - fonction pour charger les thèmes d'un encadreur spécifique
+
+void modif_groupe::onParcoursChanged(int index)
+{
+    QString trilogieEncadreur = ui->comboBox_8->currentData().toString();
+    if (!trilogieEncadreur.isEmpty()) {
+        chargerThemesParEncadreur(trilogieEncadreur);
+    }
+}
+
+
 void modif_groupe::chargerThemesParEncadreur(const QString& trilogieEncadreur)
 {
     ui->comboBox_9->clear();
     ui->comboBox_9->addItem("Sélectionner Thème", "");
 
     if (trilogieEncadreur.isEmpty()) {
-        return; // Pas d'encadreur sélectionné
+        return;
     }
 
+    QString parcoursFiltre = ui->comboBox_10->currentData().toString();
     QSqlQuery query;
-    query.prepare("SELECT num_theme, libelle FROM THEME WHERE ENSEIGNANT_Trilogie_ens = :trilogie ORDER BY libelle");
+
+
+    if (parcoursFiltre == "generique") {
+        query.prepare("SELECT num_theme, libelle FROM THEME WHERE ENSEIGNANT_Trilogie_ens = :trilogie AND PARCOURS_code_parcours IS NULL ORDER BY libelle");
+    } else if (!parcoursFiltre.isEmpty()) {
+        query.prepare("SELECT num_theme, libelle FROM THEME WHERE ENSEIGNANT_Trilogie_ens = :trilogie AND PARCOURS_code_parcours = :parcours ORDER BY libelle");
+        query.bindValue(":parcours", parcoursFiltre);
+    } else {
+        query.prepare("SELECT num_theme, libelle FROM THEME WHERE ENSEIGNANT_Trilogie_ens = :trilogie ORDER BY libelle");
+    }
+
     query.bindValue(":trilogie", trilogieEncadreur);
 
     if (query.exec()) {
@@ -131,8 +164,6 @@ void modif_groupe::remplirFormulaire(const QString& nomGroupe, const QString& cl
             break;
         }
     }
-
-    // theme encadreur - charger les thèmes de cet encadreur avant de sélectionner
     chargerThemesParEncadreur(encadreur);
 
     for (int i = 0; i < ui->comboBox_9->count(); ++i) {
